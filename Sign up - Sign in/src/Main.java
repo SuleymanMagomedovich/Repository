@@ -115,14 +115,78 @@ public class Main {
                     System.out.println("4 - Back");
                     System.out.println("5 - Exit");
 
+                    String change = scanner.nextLine();
+                    boolean cheking = true;
+                    String changeLogin = null;
 
-                    action = scanner.nextLine();
-                    if (action.equals("4")) {
+                    if (change.equals("1")) {
+                        while (cheking) {
+                            System.out.println("Введите новый логин:");
+                            changeLogin = scanner.nextLine();
+                            if (changeLogin.equals(users[user].getLogin())) {
+                                System.out.println("Логин должен отличаться от прежнего.");
+                            } else if (changeLogin.trim().isEmpty()) {
+                                System.out.println("Поле не должно быть пустым!");
+                            } else cheking = false;
+                        }
+                        System.out.print("Вы изменили логин \"" + users[user].getLogin() + "\" ");
+                        users[user].setLogin(changeLogin);
+                        System.out.println("на \"" + users[user].getLogin() + "\".");
+
+                    } else if (change.equals("2")) {
+                        String changePassword = null;
+                        while (cheking) {
+                            System.out.println("Введите новый пароль:");
+                            changePassword = scanner.nextLine();
+                            if (changePassword.equals(users[user].getPassword())) {
+                                System.out.println("Пароли должны быть разными!");
+                            } else if (changePassword.trim().isEmpty()) {
+                                System.out.println("Поле не должно быть пустым!");
+                            } else cheking = false;
+                        }
+                        System.out.print("Вы изменили пароль \"" + users[user].getPassword() + "\" ");
+                        users[user].setPassword(changePassword);
+                        System.out.println("на \"" + users[user].getPassword() + "\".");
+
+                    } else if (change.equals("3")) {
+                        String changeName = null;
+                        while (cheking) {
+                            System.out.println("Введите новое имя:");
+                            changeName = scanner.nextLine();
+                            if (changeName.equals(users[user].getName())) {
+                                System.out.println("Имя должно отличаться от прежнего.");
+                            } else if (changeName.trim().isEmpty()) {
+                                System.out.println("Поле не должно быть пустым!");
+                            } else cheking = false;
+                        }
+                        System.out.print("Вы изменили имя \"" + users[user].getName() + "\" ");
+                        users[user].setName(changeName);
+                        System.out.println("на \"" + users[user].getName() + "\".");
+
+                    } else if (change.equals("4")) {
                         break;
+
+                    } else if (change.equals("5")) {
+                        System.out.println("Вы точно хотите выйти?\n" +
+                                "1 -> ДА.\n" +
+                                "2 -> НЕТ.");
+                        while (cheking) {
+                            switch (scanner.nextLine()) {
+                                case "1":
+                                    System.exit(0);
+                                    break;
+                                case "2":
+                                    cheking = false;
+                                    break;
+                                default:
+                                    System.out.println("Вы ввели не верно!");
+                            }
+                        }
                     } else {
-                        System.out.println("Ne pravilniy vvod");
+                        System.out.println("Error enter number");
                     }
                 }
+
             } else if (action.equals("2")) {
                 boolean checkingEmpty = true;
                 while (checkingEmpty) {
