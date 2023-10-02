@@ -83,14 +83,21 @@ public class Main {
             if (action.equals("1")) {
                 System.out.println("Sign in");
                 scanner = new Scanner(System.in);
-                System.out.println("Enter Login : ");
-                login = scanner.nextLine();
-                System.out.println("Enter Password : ");
-                password = scanner.nextLine();
+                boolean checkInput = true;
+                while (checkInput) {
+                    System.out.println("Enter Login : ");
+                    login = scanner.nextLine();
+                    System.out.println("Enter Password : ");
+                    password = scanner.nextLine();
+                    if (login.trim().isEmpty() || password.trim().isEmpty()) {
+                        System.out.println("Поля не должны быть пустыми!");
+                    } else checkInput = false;
+                }
 
                 boolean isSignIn = false;
                 int user = 0;
                 for (int i = 0; i < index; i++) {
+
                     if (users[i].getPassword().equals(password) &&
                             users[i].getLogin().equals(login)) {
                         isSignIn = true;
