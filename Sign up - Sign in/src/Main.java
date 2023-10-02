@@ -62,7 +62,11 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String action, name, login, password, repeadPassword;
+        String action;
+        String name = null;
+        String login = null;
+        String password = null;
+        String repeadPassword = null;
 
         Scanner scanner = new Scanner(System.in);
         int index = 0;
@@ -113,16 +117,22 @@ public class Main {
                     }
                 }
             } else if (action.equals("2")) {
-                System.out.println("Registration");
-                scanner = new Scanner(System.in);
-                System.out.println("Enter Login : ");
-                login = scanner.nextLine();
-                System.out.println("Enter Name : ");
-                name = scanner.nextLine();
-                System.out.println("Enter Password : ");
-                password = scanner.nextLine();
-                System.out.println("Enter Repead Password : ");
-                repeadPassword = scanner.nextLine();
+                boolean checkingEmpty = true;
+                while (checkingEmpty) {
+                    System.out.println("Registration");
+                    scanner = new Scanner(System.in);
+                    System.out.println("Enter Login : ");
+                    login = scanner.nextLine();
+                    System.out.println("Enter Name : ");
+                    name = scanner.nextLine();
+                    System.out.println("Enter Password : ");
+                    password = scanner.nextLine();
+                    System.out.println("Enter Repead Password : ");
+                    repeadPassword = scanner.nextLine();
+                    if (login.trim().isEmpty() || name.trim().isEmpty() || password.trim().isEmpty() || repeadPassword.trim().isEmpty()) {
+                        System.out.println("Поля не могут быть пустыми");
+                    } else checkingEmpty = false;
+                }
 
                 if (repeadPassword.equals(password)) {
                     if (!checkUnikalLogin(users, login)) {
