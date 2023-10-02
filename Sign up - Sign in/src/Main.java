@@ -105,6 +105,8 @@ public class Main {
                         user = i;
                         break;
                     }
+                }if(isSignIn == false || index == 0){
+                    System.out.println("Не правильно введен логин или пароль!");
                 }
 
                 while (isSignIn) {
