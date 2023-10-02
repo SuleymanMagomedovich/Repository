@@ -100,6 +100,7 @@ public class Main {
 
                     if (users[i].getPassword().equals(password) &&
                             users[i].getLogin().equals(login)) {
+                        System.out.println("Здравствуйте " + users[i].getName() + ". Dobro pojolovat v proqramu.");
                         isSignIn = true;
                         user = i;
                         break;
@@ -108,7 +109,6 @@ public class Main {
 
                 while (isSignIn) {
                     scanner = new Scanner(System.in);
-                    System.out.println("Dobro pojolovat v proqramu " + users[user].getName());
                     System.out.println("1 - Change login");
                     System.out.println("2 - Change password");
                     System.out.println("3 - Change name");
